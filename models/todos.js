@@ -1,17 +1,19 @@
 'use strict';
-
-var tasks = {}; // acá vamos a guardar nuestras personas y tareas
-
+var tasks = {}; 
+var list = [];
 module.exports = {
-  reset: function () {
-    tasks = {}; // esta función ya esta armada :D
-  },
-  // ==== COMPLETEN LAS SIGUIENTES FUNCIONES (vean los test de `model.js`) =====
-  listPeople: function () {
-    // devuelve un arreglo de personas con tareas
-  },
-  add: function (name, task) {
-    // guarda una tarea para una persona en particular
-  }
-  // etc.
-};
+  reset: () =>{tasks = {};list = [];},
+  listPeople:()=>list,
+  add:(name, task)=> {
+    if (task.complete === undefined) {task.complete = false;} 
+    if (tasks[name] === undefined){
+      tasks[name] = [];
+      tasks[name].push(task)
+      list.push(name)
+    }else tasks[name].push(task)},
+  list:(name)=>tasks[name],
+  complete:(name, posicion)=>tasks[name][posicion].complete = true,
+  remove:(name, posicion)=>tasks[name].splice(posicion, 1)}
+
+
+  /// anda a buscarla al angulo messi para vos super comprimdooo !!!!!!!! jajajaja
